@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import "./App.css";
 
-function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageChange, heightChange }) {
+function App({ smurfs, formValues, fetchSmurfs, postSmurf, deleteSmurf, nameChange, ageChange, heightChange }) {
   // smurfs = []
   // newSmurfValues = {
   //   name: '',
@@ -14,7 +14,7 @@ function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageC
   console.log(smurfs);
 
   useEffect(() => {
-    fetchCharacters();
+    fetchSmurfs();
   }, []);
 
 
@@ -28,7 +28,7 @@ function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageC
         <input type="number" value={formValues.age} onChange={ageChange}></input>
         <label >height</label>
         <input type="number" value={formValues.height} onChange={heightChange}></input>
-        <button type="button" onClick={e => postSmurfs(formValues)}>ADD</button>
+        <button type="button" onClick={e => postSmurf(formValues)}>ADD</button>
       </form>
       {smurfs.map(smurf => {
         return (
@@ -36,7 +36,7 @@ function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageC
             <h3>{smurf.name}</h3>
             <p>age: {smurf.age}</p>
             <p>height: {smurf.height}cm</p>
-            <button>delete</button>
+            <button type="button" onClick={e => deleteSmurf(smurf.id)}>delete</button>
           </div>
         );
       })}

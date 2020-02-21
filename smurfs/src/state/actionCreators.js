@@ -3,7 +3,7 @@ import axios from "axios";
 
 const smurfsAPI = "http://localhost:3333/smurfs";
 
-export const fetchCharacters = () => dispatch => {
+export const fetchSmurfs = () => dispatch => {
   dispatch({ type: types.FETCH_SMURFS_START });
   axios
     .get(smurfsAPI)
@@ -28,7 +28,7 @@ export const heightChange = e => dispatch => {
   dispatch({ type: types.HEIGHT_CHANGE, payload: inputValue });
 };
 
-export const postSmurfs = smurfValues => dispatch => {
+export const postSmurf = smurfValues => dispatch => {
   dispatch({ type: types.POST_SMURFS_START });
   dispatch({ type: types.MAKE_THINGS_RIGHT });
   axios
@@ -40,3 +40,15 @@ export const postSmurfs = smurfValues => dispatch => {
       debugger;
     });
 };
+
+export const deleteSmurf = id => dispatch => {
+    dispatch({ type: types.DELETE_SMURF_START})
+    axios
+    .delete(`${smurfsAPI}/${id}`)
+    .then(res => {
+        dispatch({ type: types.SET_DELETED_SMURF, payload: res.data})
+    })
+    .catch(err => {
+        debugger
+    })
+}

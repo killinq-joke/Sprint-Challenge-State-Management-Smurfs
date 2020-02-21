@@ -3,14 +3,14 @@ import * as types from "./actionTypes";
 const initialStateSmurfs = [];
 export function smurfReducer(state = initialStateSmurfs, action) {
   switch (action.type) {
-    case types.FETCH_SMURFS_START:
-      return state;
     case types.SET_FETCHED_SMURFS:
       const fetchedSmurfs = action.payload;
       return fetchedSmurfs;
     case types.SET_POSTED_SMURFS:
       const smurfs = action.payload;
       return smurfs;
+    case types.SET_DELETED_SMURF:
+        return action.payload;
     default:
       return state;
   }
