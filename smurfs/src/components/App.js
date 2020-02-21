@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+import SmurfsList from "./SmurfsList";
 import "./App.css";
 
 function App({
@@ -8,8 +9,7 @@ function App({
   formValues,
   fetchSmurfs,
   postSmurf,
-  editSmurf,
-  deleteSmurf,
+ 
   nameChange,
   ageChange,
   heightChange
@@ -49,24 +49,7 @@ function App({
           ADD
         </button>
       </form>
-      {smurfs.map(smurf => {
-        return (
-          <div key={smurf.id}>
-            <h3>{smurf.name}</h3>
-            <p>age: {smurf.age}</p>
-            <p>height: {smurf.height}cm</p>
-            <button
-              type="button"
-              onClick={e => editSmurf(smurf.id, formValues)}
-            >
-              EDIT
-            </button>
-            <button type="button" onClick={e => deleteSmurf(smurf.id)}>
-              DELTE
-            </button>
-          </div>
-        );
-      })}
+      <SmurfsList />
     </div>
   );
 }
