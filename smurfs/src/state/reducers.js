@@ -28,7 +28,6 @@ export function formReducer(state = initialStateForm, action) {
     case types.MAKE_THINGS_RIGHT:
         return {
             ...state,
-            height: `${state.height}cm`,
             id: state.id + 1
         }
     case types.SET_POSTED_SMURFS:

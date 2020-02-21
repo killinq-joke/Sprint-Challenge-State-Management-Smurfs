@@ -9,3 +9,6 @@ export const NAME_CHANGE = "NAME_CHANGE";
 export const AGE_CHANGE = "AGE_CHANGE";
 export const HEIGHT_CHANGE = "HEIGHT_CHANGE";
 export const MAKE_THINGS_RIGHT = "MAKE_THINGS_RIGHT";
+// delete
+export const SET_DELETED_SMURF = "SET_DELETED_SMURF";
+export const DELETE_SMURF_START = "DELETE_SMURF_START";

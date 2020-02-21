@@ -25,9 +25,9 @@ function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageC
         <label>name</label>
         <input value={formValues.name} onChange={nameChange}></input>
         <label>age</label>
-        <input value={formValues.age} onChange={ageChange}></input>
-        <label>height</label>
-        <input value={formValues.height} onChange={heightChange}></input>
+        <input type="number" value={formValues.age} onChange={ageChange}></input>
+        <label >height</label>
+        <input type="number" value={formValues.height} onChange={heightChange}></input>
         <button type="button" onClick={e => postSmurfs(formValues)}>ADD</button>
       </form>
       {smurfs.map(smurf => {
@@ -35,7 +35,8 @@ function App({ smurfs, formValues, fetchCharacters, postSmurfs, nameChange, ageC
           <div key={smurf.id}>
             <h3>{smurf.name}</h3>
             <p>age: {smurf.age}</p>
-            <p>height: {smurf.height}</p>
+            <p>height: {smurf.height}cm</p>
+            <button>delete</button>
           </div>
         );
       })}

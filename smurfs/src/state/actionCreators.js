@@ -30,7 +30,7 @@ export const heightChange = e => dispatch => {
 
 export const postSmurfs = smurfValues => dispatch => {
   dispatch({ type: types.POST_SMURFS_START });
-  dispatch({ type: types.MAKE_THINGS_RIGHT })
+  dispatch({ type: types.MAKE_THINGS_RIGHT });
   axios
     .post(smurfsAPI, smurfValues)
     .then(res => {
