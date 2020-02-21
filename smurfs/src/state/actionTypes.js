@@ -12,3 +12,6 @@ export const MAKE_THINGS_RIGHT = "MAKE_THINGS_RIGHT";
 // delete
 export const SET_DELETED_SMURF = "SET_DELETED_SMURF";
 export const DELETE_SMURF_START = "DELETE_SMURF_START";
+// put
+export const SET_EDITED_SMURF = "SET_EDITED_SMURF";
+export const EDIT_SMURF_START = "EDIT_SMURF_START";

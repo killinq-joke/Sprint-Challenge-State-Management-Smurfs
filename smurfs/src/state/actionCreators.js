@@ -42,13 +42,25 @@ export const postSmurf = smurfValues => dispatch => {
 };
 
 export const deleteSmurf = id => dispatch => {
-    dispatch({ type: types.DELETE_SMURF_START})
-    axios
+  dispatch({ type: types.DELETE_SMURF_START });
+  axios
     .delete(`${smurfsAPI}/${id}`)
     .then(res => {
-        dispatch({ type: types.SET_DELETED_SMURF, payload: res.data})
+      dispatch({ type: types.SET_DELETED_SMURF, payload: res.data });
     })
     .catch(err => {
-        debugger
+      debugger;
+    });
+};
+
+export const editSmurf = (id, newValues) => dispatch => {
+  dispatch({ type: types.EDIT_SMURF_START });
+  axios
+    .put(`${smurfsAPI}/${id}`, newValues)
+    .then(res => {
+      dispatch({ type: types.SET_EDITED_SMURF, payload: res.data });
     })
-}
+    .catch(err => {
+      debugger;
+    });
+};

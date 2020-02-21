@@ -10,7 +10,9 @@ export function smurfReducer(state = initialStateSmurfs, action) {
       const smurfs = action.payload;
       return smurfs;
     case types.SET_DELETED_SMURF:
-        return action.payload;
+      return action.payload;
+    case types.SET_EDITED_SMURF:
+      return action.payload;
     default:
       return state;
   }
@@ -26,10 +28,10 @@ const initialStateForm = {
 export function formReducer(state = initialStateForm, action) {
   switch (action.type) {
     case types.MAKE_THINGS_RIGHT:
-        return {
-            ...state,
-            id: state.id + 1
-        }
+      return {
+        ...state,
+        id: state.id + 1
+      };
     case types.SET_POSTED_SMURFS:
       return initialStateForm;
     case types.NAME_CHANGE:
