@@ -12,7 +12,7 @@ function SmurfCard({ smurf, formValues, editSmurf, deleteSmurf }) {
         EDIT
       </button>
       <button type="button" onClick={e => deleteSmurf(smurf.id)}>
-        DELTE
+        DELETE
       </button>
     </div>
   );
