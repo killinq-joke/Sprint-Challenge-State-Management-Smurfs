@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import * as actionCreators from "../state/actionCreators";
-import SmurfsList from "./SmurfsList";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
+import SmurfsList from './SmurfsList';
+import './App.css';
 
 function App({
   smurfs,
   formValues,
   fetchSmurfs,
   postSmurf,
- 
-  nameChange,
-  ageChange,
-  heightChange
+
+  inputChange
+  // ageChange,
+  // heightChange
 }) {
   // smurfs = []
   // newSmurfValues = {
@@ -22,34 +22,40 @@ function App({
   //   id: smurfs.length
   // }
   console.log(smurfs);
-
+  const [edit, setEdit] = useState(false);
   useEffect(() => {
     fetchSmurfs();
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <h1>SMURFS! 2.0 W/ Redux</h1>
       <form>
         <label>name</label>
-        <input value={formValues.name} onChange={nameChange}></input>
+        <input
+          name='name'
+          value={formValues.name}
+          onChange={inputChange}
+        ></input>
         <label>age</label>
         <input
-          type="number"
+          name='age'
+          type='number'
           value={formValues.age}
-          onChange={ageChange}
+          onChange={inputChange}
         ></input>
         <label>height</label>
         <input
-          type="number"
+          name='height'
+          type='number'
           value={formValues.height}
-          onChange={heightChange}
+          onChange={inputChange}
         ></input>
-        <button type="button" onClick={e => postSmurf(formValues)}>
+        <button type='button' onClick={e => postSmurf(formValues)}>
           ADD
         </button>
       </form>
-      <SmurfsList />
+      <SmurfsList edit={edit} setEdit={setEdit} />
     </div>
   );
 }

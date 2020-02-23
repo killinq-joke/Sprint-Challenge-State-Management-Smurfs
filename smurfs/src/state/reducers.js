@@ -1,6 +1,7 @@
-import * as types from "./actionTypes";
+import * as types from './actionTypes';
 
 const initialStateSmurfs = [];
+
 export function smurfReducer(state = initialStateSmurfs, action) {
   switch (action.type) {
     case types.SET_FETCHED_SMURFS:
@@ -19,9 +20,9 @@ export function smurfReducer(state = initialStateSmurfs, action) {
 }
 
 const initialStateForm = {
-  name: "",
-  age: "",
-  height: "",
+  name: '',
+  age: '',
+  height: '',
   id: 0
 };
 
@@ -34,21 +35,28 @@ export function formReducer(state = initialStateForm, action) {
       };
     case types.SET_POSTED_SMURFS:
       return initialStateForm;
-    case types.NAME_CHANGE:
+    case types.INPUT_CHANGE_EDIT:
       return {
         ...state,
-        name: action.payload
+        name: action.payload.name,
+        age: action.payload.age,
+        height: action.payload.height
       };
-    case types.AGE_CHANGE:
+    case types.INPUT_CHANGE:
       return {
         ...state,
-        age: action.payload
+        [action.payload.inputName]: action.payload.inputValue
       };
-    case types.HEIGHT_CHANGE:
-      return {
-        ...state,
-        height: action.payload
-      };
+    // case types.AGE_CHANGE:
+    //   return {
+    //     ...state,
+    //     age: action.payload
+    //   };
+    // case types.HEIGHT_CHANGE:
+    //   return {
+    //     ...state,
+    //     height: action.payload
+    //   };
     default:
       return state;
   }

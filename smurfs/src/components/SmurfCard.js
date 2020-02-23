@@ -1,17 +1,35 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actionCreators from "../state/actionCreators";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
 
-function SmurfCard({ smurf, formValues, editSmurf, deleteSmurf }) {
+function SmurfCard({
+  smurf,
+  formValues,
+  editSmurf,
+  deleteSmurf,
+  edit,
+  inputChangeEdit,
+  setEdit
+}) {
+  const editing = () => {
+    setEdit(true);
+    inputChangeEdit(smurf);
+  };
+  const editingConfirm = () => {
+    editSmurf(smurf.id, formValues);
+  };
   return (
     <div key={smurf.id}>
       <h3>{smurf.name}</h3>
       <p>age: {smurf.age}</p>
       <p>height: {smurf.height}cm</p>
-      <button type="button" onClick={e => editSmurf(smurf.id, formValues)}>
+      <button type='button' onClick={e => editing()}>
         EDIT
       </button>
-      <button type="button" onClick={e => deleteSmurf(smurf.id)}>
+      <button type='button' onClick={e => editingConfirm()}>
+        SUBMTI EDIT
+      </button>
+      <button type='button' onClick={e => deleteSmurf(smurf.id)}>
         DELETE
       </button>
     </div>
