@@ -1,16 +1,64 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
+import SmurfsList from "./SmurfsList";
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+
+function App({
+  smurfs,
+  formValues,
+  fetchSmurfs,
+  postSmurf,
+ 
+  nameChange,
+  ageChange,
+  heightChange
+}) {
+  // smurfs = []
+  // newSmurfValues = {
+  //   name: '',
+  //   age: '',
+  //   height: '',
+  //   id: smurfs.length
+  // }
+  console.log(smurfs);
+
+  useEffect(() => {
+    fetchSmurfs();
+  }, []);
+
+  return (
+    <div className="App">
+      <h1>SMURFS! 2.0 W/ Redux</h1>
+      <form>
+        <label>name</label>
+        <input value={formValues.name} onChange={nameChange}></input>
+        <label>age</label>
+        <input
+          type="number"
+          value={formValues.age}
+          onChange={ageChange}
+        ></input>
+        <label>height</label>
+        <input
+          type="number"
+          value={formValues.height}
+          onChange={heightChange}
+        ></input>
+        <button type="button" onClick={e => postSmurf(formValues)}>
+          ADD
+        </button>
+      </form>
+      <SmurfsList />
+    </div>
+  );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    smurfs: state.smurfs,
+    formValues: state.formValues
+  };
+}
+
+export default connect(mapStateToProps, actionCreators)(App);
